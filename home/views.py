@@ -12,7 +12,13 @@ class HomeView(CreateView):
     context_object_name = 'restuarant'
 
     def get_queryset():
-        user = User.objects.filter()
+        user = User.objects.filter(is_staff=True)
+        try:
+            if user is not None:
+                return f"{user.username} is a staff"
+        except Exception as e:
+            print(f"Not a staff {e}")
+            return None
 
 
 class RestaurantView(TemplateView):
