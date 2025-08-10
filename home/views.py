@@ -16,9 +16,9 @@ class HomeView(CreateView):
         try:
             if user is not None:
                 return f"{user.username} is a staff"
-        except Exception as e:
-            print(f"Not a staff {e}")
-            return None
+        except user.DoesNotExist:
+            raise ValueError("User isnt a staff")
+            
 
 
 class RestaurantView(TemplateView):
