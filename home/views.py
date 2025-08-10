@@ -16,7 +16,7 @@ class HomeView(CreateView):
         try:
             if user is not None:
                 return f"{user.username} is a staff"
-        except user.DoesNotExist:
+        except User.DoesNotExist:
             raise ValueError("User isnt a staff")
             
 
