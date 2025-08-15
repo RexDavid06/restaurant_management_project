@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from home.models import Restaurant
+from .models import Restaurant, RestaurantLocation
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.models import User
@@ -25,7 +25,8 @@ class HomeView(CreateView):
             
 
 
-class RestaurantView(TemplateView):
+class RestaurantView(CreateView):
+    model = RestaurantLocation.objects.all()
     template_name = 'home/restaurant.html'
     
 
