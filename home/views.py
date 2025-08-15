@@ -28,6 +28,7 @@ class HomeView(CreateView):
 class RestaurantView(CreateView):
     model = RestaurantLocation.objects.all()
     template_name = 'home/restaurant.html'
+    context_object_name = 'restaurant_location'
     
 
 class MenuItemView(CreateView):
