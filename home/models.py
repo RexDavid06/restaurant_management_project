@@ -21,6 +21,7 @@ class MenuItem(models.Model):
     description = models.TextField()
     price = models.DecimalField(amx_digits=1000, decimal_places=2)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    //images
     image = models.ImageField(upload_to='item-images')
 
 
