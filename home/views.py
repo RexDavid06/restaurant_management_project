@@ -3,6 +3,10 @@ from home.models import Restaurant
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.models import User
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import RestaurantSerializer
 
 
 # Create your views here.
@@ -27,3 +31,14 @@ class RestaurantView(TemplateView):
 
 class MenuItemView(CreateView):
     template_name = 'home/menuItem.html'
+
+
+@api_view(["GET"])
+def restaurant_info(request, pk):
+    try:
+        restuarant = Restaurant.objects.get(pk=pk)
+    except Restaurant.DoesNotExist:
+        return Response({"error": 'restuarant not found'}, status=status.HTTP_400_BAD_REQUEST)
+
+    serializer = RestaurantSerializer(restaurant)
+    return Response(serializer.data, status=status.HTTP_200_OK)
