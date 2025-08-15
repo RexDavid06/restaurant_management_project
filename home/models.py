@@ -5,6 +5,7 @@ class Restuarant(models.Model):
     name = models.CharField(max_length=200)
     desc = models.TextField()
     phone_number = models.CharField(max_length=17)
+    address = models.CharField(max_length=700)
 
     class Meta:
         verbose_name = "Restaurant"
