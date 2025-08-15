@@ -1,4 +1,5 @@
 from django.db import models
+from products.models import Item
 
 # Create your models here.
 class Restuarant(models.Model):
@@ -19,6 +20,8 @@ class MenuItem(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField()
     price = models.DecimalField(amx_digits=1000, decimal_places=2)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='item-images')
 
 
 class RestuarantLocation(models.Model):
