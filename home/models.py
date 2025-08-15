@@ -2,7 +2,7 @@ from django.db import models
 from products.models import Item
 
 # Create your models here.
-class Restuarant(models.Model):
+class Restaurant(models.Model):
     name = models.CharField(max_length=200)
     desc = models.TextField()
     phone_number = models.CharField(max_length=17)
@@ -25,7 +25,7 @@ class MenuItem(models.Model):
     image = models.ImageField(upload_to='item-images')
 
 
-class RestuarantLocation(models.Model):
+class RestaurantLocation(models.Model):
     address = models.CharField(max_length=400)
     city = models.CharField(max_length=300)
     state = models.CharField(max_length=200)
